@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <title>CCA FINANÇAS</title>
+</head>
+
+<body>
+    <section id="login">
+        <div class="content-login">
+            <div class="header-login">
+                <img src="assets/Logo.svg" alt="logo">
+                <h1 class="title-login">seu controle financeiro</h1>
+            </div>
+            <form class="form-login" action="deshboard.html">
+                <div class="grupo-input">
+                    <label>e-mail</label>
+                    <input type="email" name="email" id="email" class="input-login" placeholder="seu e-mail" />
+                </div>
+                <div class="grupo-input  input-password" >
+
+                    <label>senha</label>
+                    <input type="password" name="password" id="password" class="input-login" placeholder="senha" />
+                    <i id="hide-password" class="bi bi-eye"></i>
+                    <i id="show-password" class="bi bi-eye-slash"></i>
+                </div>
+                <p class="fort-password"> esqueceu a senha?</p>
+                <input type="submit" value="entrar" class="submit-form-login" />
+
+            </form>
+        </div>
+    </section>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
