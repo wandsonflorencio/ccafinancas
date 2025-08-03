@@ -6,98 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+
     <title>CCA FINANÇAS</title>
 </head>
 
 <body>
 
-    <div class="modal-add-expense">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Cadastrar Despesas</h2>
-                <i class="bi bi-x close-modal-add-expense"></i>
-            </div>
-            <form class="form-add-expense">
-                <div class="grupo-input">
-                    <label>Nome</label>
-                    <input type="text" name="nome" id="nome-expense" class="input-login" placeholder="digite o nome da despesa">
-                </div>
-                <div class="grupo-input">
-                    <label>Setor</label>
-                    <select name="setor" id="setor-expence" class="input-login">
-                        <option disabled selected>Selecione o Setor</option>
-                        <option value="setor-a">setor A</option>
-                        <option value="setor-b">setor B</option>
-                        <option value="setor-c">setor C</option>
-                        <option value="setor-d">setor D</option>
-                    </select>
-                </div>
-                <div class="grupo-input">
-                    <label>forma de pagamento</label>
-                    <select name="pyment-method" id="pyment-method" class="input-login">
-                        <option disabled selected>Selecione o status</option>
-                        <option value="credit-card">Cartão de Crédito</option>
-                        <option value="credit-card">Cartão de Débito</option>
-                        <option value="money">Dinheiro</option>
-                    </select>
-                </div>
-                <div class="grupo-input">
-                    <label>Valor</label>
-                    <input type="text" name="value" id="value-expense" class="input-login" placeholder="Digite o valor">
-                </div>
-                <div class="grupo-input">
-                    <label>Parcelas</label>
-                    <input type="number" name="installments" id="installments" class="input-login" placeholder="digite o número de parcelas">
-                
-                </div>
-                <div class="grupo-input">
-                    <label>Status</label>
-                    <select name="status" id="status-expense" class="input-login">
-                        <option disabled selected>Selecione o status</option>
-                        <option value="paid">Pago</option>
-                        <option value="pending">Pendente</option>
-                    </select>
-                
-                </div>
-                <div class="grupo-input">
-                    <label>Data</label>
-                    <input type="date" name="data" id="date-expense" class="input-login">
-                </div>
-                <input type="submit" value="adicionar" class="submit-form-login">
 
-            </form>
-        </div>
-        
-    </div>
-    <div class="modal-delete-expense">
-        <dic class="modal-content">
-            <div class="modal-header">
-                <h2>excluir despesa</h2>
-                <i class="bi bi-x close-modal-delete-expense"></i>
-            </div>
-            <div class="modal-body">
-                <p>deseja mesmo excluir essa despesa?</p>
-            </div>
-            <div class="modal-footer">
-                <button class="cancel-button cancel-delete-expense">Cancelar</button>
-                <button class="delete-button confirm-delete-expense">Excluir</button>
-            </div>
-        </dic>
-    </div>
     <section id="deshboard">
         <div class="menu-bar">
             <div class="header-bar">
-                <img src="assets/Logo.svg" width="40px" alt="controle financeiro"/>
+                <img src="assets/Logo.svg" width="40px" alt="controle financeiro" />
             </div>
             <div class="conteiner-interno-menu">
                 <div class="option-menu">
                     <div class="action">
-                        <img src="assets/Frame 66.svg" width="25px" alt="engrenagem"/>
+                        <img src="assets/Frame 66.svg" width="25px" alt="engrenagem" />
                         <span>MENU</span>
                     </div>
                     <span class="toglle-menu">></span>
@@ -112,7 +42,7 @@
 
             </div>
             <div class="info-user-login">
-                <img src="assets/Ellipse 14.png"/>
+                <img src="assets/Ellipse 14.png" />
                 <div class="info-user">
                     <span>Nome do Usuários</span>
                     <span>email@gmail.com</span>
@@ -125,30 +55,107 @@
                     <li><a href="index.html">inicio</a></li>
                     <li>desboard</li>
                 </ol>
-                <img src="assets/Vector1.png" alt="notificaçao" width="20px"/>
+                <img src="assets/Vector1.png" alt="notificaçao" width="20px" />
             </div>
             <div class="modulo-conteiner">
-               <div class="content-info-total-value">
-                <div class="card-info-total-value">
-                    <span>Receitas</span>
-                    <span>R$ 0,00</span>
+                <div class="content-info-total-value">
+                    <div class="card-info-total-value">
+                        <span>Receitas</span>
+                        <span id="valor-receitas">R$ 0,00</span>
+                    </div>
+
+                    <div class="card-info-total-value">
+                        <span>Despesas</span>
+                        <span id="valor-despesas">R$ 0,00</span>
+                    </div>
+
+                    <div class="card-info-total-value">
+                        <span>Saldo</span>
+                        <span id="valor-saldo">R$ 0,00</span>
+                    </div>
+                </div>
+                <div class="graficos-dashboard" >
+                    <div class="colunas" style="width: 40%;">
+                        <h3>Receitas x Despesas</h3>
+                        <canvas id="graficoBarra"></canvas>
+                    </div>
+                    <div class="pizza" style="width: 20%;">
+                        <h3>Distribuição por Setor</h3>
+                        <canvas id="graficoPizza"></canvas>
+                    </div>
                 </div>
 
-                <div class="card-info-total-value">
-                    <span>Despesas</span>
-                    <span>R$ 0,00</span>
+
+                <div class="content-modulo">
+                    <div class="header-module">
+                        <h2>Transações Recentes</h2>
+                        <button class="add-botao" id="add-new-expense">Nova Receita +</button>
+                    </div>
+
+                    <div class="search-box">
+                        <input type="text" placeholder="buscar por nome ou valor" class="search-input" />
+                        <i class="bi bi-search search-icon"></i>
+                    </div>
+
+                    <table class="value-item">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Receita</td>
+                                <td>Venda produto X</td>
+                                <td>R$ 300,00</td>
+                                <td><span class="paind-status">Recebido</span></td>
+                                <td>02/08/2025</td>
+                                <td>
+                                    <div class="action-table">
+                                        <div class="content-deletar">
+                                            <i class="bi bi-trash delete-icon"></i>
+                                            <span class="hover-delete">Excluir</span>
+                                        </div>
+                                        <div class="content-editar">
+                                            <i class="bi bi-pencil-fill edit-icon"></i>
+                                            <span class="hover-editar">Editar</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Despesa</td>
+                                <td>Conta de água</td>
+                                <td>R$ 150,00</td>
+                                <td><span class="pending-status">Pendente</span></td>
+                                <td>01/08/2025</td>
+                                <td>
+                                    <div class="action-table">
+                                        <div class="content-deletar">
+                                            <i class="bi bi-trash delete-icon"></i>
+                                            <span class="hover-delete">Excluir</span>
+                                        </div>
+                                        <div class="content-editar">
+                                            <i class="bi bi-pencil-fill edit-icon"></i>
+                                            <span class="hover-editar">Editar</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="card-info-total-value">
-                    <span>Saldo</span>
-                    <span>R$ 0,00</span>
-                </div>
-               </div>
-                
             </div>
 
         </div>
     </section>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

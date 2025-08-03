@@ -84,3 +84,89 @@ closeModalDelete?.addEventListener("click",() => {
     modalDeleteExpense.style.display =  "none";
 
 });
+
+// GRAFICO BARRAS
+const ctxBarra = document.getElementById('graficoBarra');
+new Chart(ctxBarra, {
+    type: 'bar',
+    data: {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril'],
+        datasets: [
+            {
+                label: 'Receitas',
+                data: [1200, 1900, 3000, 2500],
+                backgroundColor: '#4cd45c'
+            },
+            {
+                label: 'Despesas',
+                data: [1000, 800, 1800, 1200],
+                backgroundColor: '#d44c4c'
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// GRAFICO PIZZA
+const ctxPizza = document.getElementById('graficoPizza');
+new Chart(ctxPizza, {
+    type: 'pie',
+    data: {
+        labels: ['Setor A', 'Setor B', 'Setor C', 'Setor D'],
+        datasets: [{
+            label: 'Distribuição de Despesas',
+            data: [30, 20, 25, 25],
+            backgroundColor: [
+                '#4763e4',
+                '#facc15',
+                '#10b981',
+                '#ef4444'
+            ]
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+
+
+// Dados fictícios simulando receitas e despesas do usuário
+const receitas = [
+    { nome: "Salário", valor: 3000 },
+    { nome: "Freelance", valor: 1200 }
+];
+
+const despesas = [
+    { nome: "Aluguel", valor: 1200 },
+    { nome: "Internet", valor: 100 },
+    { nome: "Luz", valor: 300 }
+];
+
+// Função para calcular os totais
+function atualizarDashboard() {
+    const totalReceitas = receitas.reduce((acc, atual) => acc + atual.valor, 0);
+    const totalDespesas = despesas.reduce((acc, atual) => acc + atual.valor, 0);
+    const saldo = totalReceitas - totalDespesas;
+
+    // Inserindo no HTML
+    document.getElementById("valor-receitas").textContent = formatarValor(totalReceitas);
+    document.getElementById("valor-despesas").textContent = formatarValor(totalDespesas);
+    document.getElementById("valor-saldo").textContent = formatarValor(saldo);
+}
+
+// Função para formatar como R$ 0,00
+function formatarValor(valor) {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+// Chamada da função ao carregar
+atualizarDashboard();
+
+
