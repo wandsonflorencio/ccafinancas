@@ -36,6 +36,23 @@ toglleMenuBotao?.addEventListener("click",() =>{
    isNotClickd = !isNotClickd;
 
 })
+//tema escuro//
+const toggleTema = document.getElementById("toggle-tema");
+
+toggleTema?.addEventListener("click", () => {
+    const body = document.body;
+
+    if (body.classList.contains("tema-claro")) {
+        body.classList.remove("tema-claro");
+        body.classList.add("tema-escuro");
+        toggleTema.textContent = "☀️";
+    } else {
+        body.classList.remove("tema-escuro");
+        body.classList.add("tema-claro");
+        toggleTema.textContent = "🌙";
+    }
+});
+
 
 
 const itemModules = document.querySelectorAll(".menu-modulo ul li");
@@ -168,5 +185,4 @@ function formatarValor(valor) {
 
 // Chamada da função ao carregar
 atualizarDashboard();
-
 

@@ -18,144 +18,201 @@
 
 <body>
 
+    <body class="tema-claro">
 
-    <section id="deshboard">
-        <div class="menu-bar">
-            <div class="header-bar">
-                <img src="assets/Logo.svg" width="40px" alt="controle financeiro" />
-            </div>
-            <div class="conteiner-interno-menu">
-                <div class="option-menu">
-                    <div class="action">
-                        <img src="assets/Frame 66.svg" width="25px" alt="engrenagem" />
-                        <span>MENU</span>
-                    </div>
-                    <span class="toglle-menu">></span>
+
+
+        <section id="deshboard">
+            <div class="menu-bar">
+                <div class="header-bar">
+                    <img src="assets/Logo.svg" width="40px" alt="controle financeiro" />
                 </div>
-                <nav class="menu-deshbord">
+                <div class="conteiner-interno-menu">
+                    <div class="option-menu">
+                        <div class="action">
+                            <img src="assets/Frame 66.svg" width="25px" alt="engrenagem" />
+                            <span>MENU</span>
+                        </div>
+                        <span class="toglle-menu">></span>
+                    </div>
+                    <nav class="menu-deshbord">
                     <ul>
-                        <li><a href="incomes.html">Receitas</a></li>
-                        <li><a href="despesas.html">Despesas</a></li>
-                        <li><a href="users.html">Usuário</a>s</li>
+                        <li>
+                            <a href="deshboard.html">
+                                <img class="icons" width="40" height="40"
+                                    src="https://img.icons8.com/fluency/48/dashboard-layout.png"
+                                    alt="dashboard-layout" />
+                            </a>
+                            <span>Dashboard</span>
+                        </li>
+                        <li>
+                            <a href="receitas.html">
+                                <img class="icons" width="40" height="40"
+                                    src="https://img.icons8.com/color/48/accumulate.png" 
+                                    alt="accumulate" />
+                            </a>
+                            <span>Receitas</span>
+                        </li>
+                        <li>
+                            <a href="despesas.html">
+                                <img class="icons" width="40" height="40"
+                                    src="https://img.icons8.com/emoji/48/money-with-wings-emoji.png"
+                                    alt="money-with-wings-emoji" />
+                            </a>
+                            <span>Despesas</span>
+                        </li>
+                        <li>
+                            <a href="relatorios.html">
+                                <img class="icons" width="40" height="40"
+                                    src="https://img.icons8.com/color/48/graph-report.png" alt="graph-report" />
+                            </a>
+                            <span>Relatórios</span>
+                        </li>
+                        <li>
+                            <a href="configuracoes.html">
+                                <img class="icons" width="40" height="40" src="https://img.icons8.com/color/48/gear.png"
+                                    alt="gear" />
+                            </a>
+                            <span>Configuração</span>
+                        </li>
+                        <li>
+                            <a href="users.html">
+                                <img class="icons" width="40" height="40"
+                                    src="https://img.icons8.com/fluency/48/test-account--v1.png"
+                                    alt="test-account--v1" />
+                            </a>
+                            <span>Usuários</span>
+                        </li>
                     </ul>
                 </nav>
 
-            </div>
-            <div class="info-user-login">
-                <img src="assets/Ellipse 14.png" />
-                <div class="info-user">
-                    <span>Nome do Usuários</span>
-                    <span>email@gmail.com</span>
+                </div>
+                <div class="info-user-login">
+                    <img src="assets/Ellipse 14.png" />
+                    <div class="info-user">
+                        <span>wandson</span>
+                        
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="content-right">
-            <div class="content-breadcrumb">
-                <ol class="breadcrumb">
-                    <li><a href="index.html">inicio</a></li>
-                    <li>desboard</li>
-                </ol>
-                <img src="assets/Vector1.png" alt="notificaçao" width="20px" />
+            <div class="content-right">
+                <div class="content-breadcrumb">
+                
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">inicio</a></li>
+                        <li>desboard</li>
+                    </ol>
+                    <div>
+                    <img src="assets/Vector1.png" alt="notificaçao" width="20px" />
+                     <button id="toggle-tema" class="botao-tema">
+                        🌙
+                    </button>
+                    </div>
+                </div>
+                <div class="titulos">
+                    <h1>DASHBOARD</h1>
+                </div>
+
+                <div class="modulo-conteiner">
+                    <div class="content-info-total-value">
+
+                        <div class="card-info-total-value">
+                            <span>Receitas</span>
+                            <span id="valor-receitas">R$ 0,00</span>
+                        </div>
+
+                        <div class="card-info-total-value">
+                            <span>Despesas</span>
+                            <span id="valor-despesas">R$ 0,00</span>
+                        </div>
+
+                        <div class="card-info-total-value">
+                            <span>Saldo</span>
+                            <span id="valor-saldo">R$ 0,00</span>
+                        </div>
+                    </div>
+                    <div class="graficos-dashboard">
+                        <div class="colunas" style="width: 40%;">
+                            <h3>Receitas x Despesas</h3>
+                            <canvas id="graficoBarra"></canvas>
+                        </div>
+                        <div class="pizza" style="width: 20%;">
+                            <h3>Distribuição por Setor</h3>
+                            <canvas id="graficoPizza"></canvas>
+                        </div>
+                    </div>
+
+
+                    <div class="content-modulo">
+                        <div class="header-module">
+                            <h2>Transações Recentes</h2>
+                            <button class="add-botao" id="add-new-expense">Nova Receita +</button>
+                        </div>
+
+                        <div class="search-box">
+                            <input type="text" placeholder="buscar por nome ou valor" class="search-input" />
+                            <i class="bi bi-search search-icon"></i>
+                        </div>
+
+                        <table class="value-item">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Data</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Receita</td>
+                                    <td>Venda produto X</td>
+                                    <td>R$ 300,00</td>
+                                    <td><span class="paind-status">Recebido</span></td>
+                                    <td>02/08/2025</td>
+                                    <td>
+                                        <div class="action-table">
+                                            <div class="content-deletar">
+                                                <i class="bi bi-trash delete-icon"></i>
+                                                <span class="hover-delete">Excluir</span>
+                                            </div>
+                                            <div class="content-editar">
+                                                <i class="bi bi-pencil-fill edit-icon"></i>
+                                                <span class="hover-editar">Editar</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Despesa</td>
+                                    <td>Conta de água</td>
+                                    <td>R$ 150,00</td>
+                                    <td><span class="pending-status">Pendente</span></td>
+                                    <td>01/08/2025</td>
+                                    <td>
+                                        <div class="action-table">
+                                            <div class="content-deletar">
+                                                <i class="bi bi-trash delete-icon"></i>
+                                                <span class="hover-delete">Excluir</span>
+                                            </div>
+                                            <div class="content-editar">
+                                                <i class="bi bi-pencil-fill edit-icon"></i>
+                                                <span class="hover-editar">Editar</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
             </div>
-            <div class="modulo-conteiner">
-                <div class="content-info-total-value">
-                    <div class="card-info-total-value">
-                        <span>Receitas</span>
-                        <span id="valor-receitas">R$ 0,00</span>
-                    </div>
-
-                    <div class="card-info-total-value">
-                        <span>Despesas</span>
-                        <span id="valor-despesas">R$ 0,00</span>
-                    </div>
-
-                    <div class="card-info-total-value">
-                        <span>Saldo</span>
-                        <span id="valor-saldo">R$ 0,00</span>
-                    </div>
-                </div>
-                <div class="graficos-dashboard" >
-                    <div class="colunas" style="width: 40%;">
-                        <h3>Receitas x Despesas</h3>
-                        <canvas id="graficoBarra"></canvas>
-                    </div>
-                    <div class="pizza" style="width: 20%;">
-                        <h3>Distribuição por Setor</h3>
-                        <canvas id="graficoPizza"></canvas>
-                    </div>
-                </div>
-
-
-                <div class="content-modulo">
-                    <div class="header-module">
-                        <h2>Transações Recentes</h2>
-                        <button class="add-botao" id="add-new-expense">Nova Receita +</button>
-                    </div>
-
-                    <div class="search-box">
-                        <input type="text" placeholder="buscar por nome ou valor" class="search-input" />
-                        <i class="bi bi-search search-icon"></i>
-                    </div>
-
-                    <table class="value-item">
-                        <thead>
-                            <tr>
-                                <th>Tipo</th>
-                                <th>Descrição</th>
-                                <th>Valor</th>
-                                <th>Status</th>
-                                <th>Data</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Receita</td>
-                                <td>Venda produto X</td>
-                                <td>R$ 300,00</td>
-                                <td><span class="paind-status">Recebido</span></td>
-                                <td>02/08/2025</td>
-                                <td>
-                                    <div class="action-table">
-                                        <div class="content-deletar">
-                                            <i class="bi bi-trash delete-icon"></i>
-                                            <span class="hover-delete">Excluir</span>
-                                        </div>
-                                        <div class="content-editar">
-                                            <i class="bi bi-pencil-fill edit-icon"></i>
-                                            <span class="hover-editar">Editar</span>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Despesa</td>
-                                <td>Conta de água</td>
-                                <td>R$ 150,00</td>
-                                <td><span class="pending-status">Pendente</span></td>
-                                <td>01/08/2025</td>
-                                <td>
-                                    <div class="action-table">
-                                        <div class="content-deletar">
-                                            <i class="bi bi-trash delete-icon"></i>
-                                            <span class="hover-delete">Excluir</span>
-                                        </div>
-                                        <div class="content-editar">
-                                            <i class="bi bi-pencil-fill edit-icon"></i>
-                                            <span class="hover-editar">Editar</span>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-    <script src="script.js"></script>
-</body>
+        </section>
+        <script src="script.js"></script>
+    </body>
 
 </html>
